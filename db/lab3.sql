@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 07-10-2019 a las 23:46:45
+-- Tiempo de generación: 09-10-2019 a las 03:25:00
 -- Versión del servidor: 5.7.27-0ubuntu0.19.04.1
 -- Versión de PHP: 7.2.19-0ubuntu0.19.04.2
 
@@ -27,30 +27,7 @@ DELIMITER $$
 -- Procedimientos
 --
 DROP PROCEDURE IF EXISTS `cambiar_clave`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `cambiar_clave` (IN `p_nickname` VARCHAR(12), IN `p_clave` VARCHAR(80), IN `clave_nueva` VARCHAR(80), OUT `resultado` INT(2))  NO SQL
-BEGIN
-
-DECLARE correct INT;
-
-SELECT IF( EXISTS(
-             SELECT *
-             FROM usuario u
-             WHERE u.nickname =  p_nickname AND u.clave = p_clave), 1, 0) into correct;
-
-IF correct <> 1 THEN
-	SELECT 0 into resultado;
-ELSE
-	SELECT 1 into resultado;
-	UPDATE usuario
-    set usuario.clave = clave_nueva
-    WHERE u.nickname =  p_nickname;
-  
-END IF;
-
-END$$
-
-DROP PROCEDURE IF EXISTS `cambiar_clave2`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `cambiar_clave2` (IN `clave_nueva` VARCHAR(80), IN `p_nickname` VARCHAR(12))  NO SQL
+CREATE DEFINER=`root`@`localhost` PROCEDURE `cambiar_clave` (IN `clave_nueva` VARCHAR(80), IN `p_nickname` VARCHAR(12))  NO SQL
 BEGIN
 
 UPDATE usuario
@@ -141,7 +118,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_usuario` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -57,7 +57,29 @@
 					</form>
 				</div>
 			</div>
-			
+		</div>
+		<div class="row justify-content-center mt-2">
+			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4" >
+				<?php
+                    if ($credential == 1) {
+                        echo '<div class="alert alert-dismissible alert-danger">
+								<button type="button" class="close" data-dismiss="alert">&times;</button>
+								<strong>Credenciales incorrectas!</strong><br>
+								Debe estar 
+								<a href="./register.php" class="alert-link">registrado</a>
+								en el sistema	 
+							</div>';
+                    } else {
+                        if ($credential == 2) {
+                            echo '<div class="alert alert-dismissible alert-success">
+								<button type="button" class="close" data-dismiss="alert">&times;</button>
+								<strong>Usuario creado exitosamente!</strong><br>
+								Ya puede iniciar sesión.
+							</div>';
+                        }
+                    }
+                ?>
+			</div>		
 		</div>
 		
 	</div>

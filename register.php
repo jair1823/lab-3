@@ -64,20 +64,11 @@
 						</div>
 						
 						<div class="form-group">
-							<label for="username">Usuario:</label>
-							<input class="form-control" type="text" name="username" id="username"
-								value="<?php echo $validatior->getData()["username"];?>">
+							<label for="number">Telefono:</label>
+							<input class="form-control" type="text" name="number" id="number"
+								value="<?php echo $validatior->getData()["number"];?>">
 							<small class="text-danger">
-								<?php echo $validatior->getErrores()["username"];?>
-							</small>
-						</div>
-						
-						<div class="form-group">
-							<label for="password">Contraseña:</label>
-							<input class="form-control" type="text" name="password" id="password"
-								value="<?php echo $validatior->getData()["password"];?>">
-							<small class="text-danger">
-								<?php echo $validatior->getErrores()["password"];?>
+								<?php echo $validatior->getErrores()["number"];?>
 							</small>
 						</div>
 						
@@ -91,18 +82,54 @@
 						</div>
 						
 						<div class="form-group">
-							<label for="number">Telefono:</label>
-							<input class="form-control" type="text" name="number" id="number"
-								value="<?php echo $validatior->getData()["number"];?>">
+							<label for="username">Usuario:</label>
+							<input class="form-control" type="text" name="username" id="username"
+								value="<?php echo $validatior->getData()["username"];?>">
 							<small class="text-danger">
-								<?php echo $validatior->getErrores()["number"];?>
+								<?php echo $validatior->getErrores()["username"];?>
 							</small>
 						</div>
 						
+						<div class="form-group">
+							<label for="password">Contraseña:</label>
+							<input class="form-control" type="password" name="password" id="password"
+								value="<?php echo $validatior->getData()["password"];?>">
+							<small class="text-danger">
+								<?php echo $validatior->getErrores()["password"];?>
+							</small>
+						</div>
 						<button class="btn btn-primary btn-block" type="submit">enviar</button>
 					</form>
 				</div>
 			</div>
+			<?php
+                if ($error == 1) {
+                    echo '<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3" >
+						<div class="alert alert-dismissible alert-danger">
+							<button type="button" class="close" data-dismiss="alert">&times;</button>
+							<strong>Este correo ya esta en uso.</strong>	 
+						</div>
+					</div>';
+                } else {
+                    if ($error == 2) {
+                        echo '<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3" >
+							<div class="alert alert-dismissible alert-danger">
+								<button type="button" class="close" data-dismiss="alert">&times;</button>
+								<strong>Este usuario ya esta en uso.</strong>
+							</div>
+						</div>';
+                    } else {
+                        if ($error==3) {
+                            echo '<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3" >
+								<div class="alert alert-dismissible alert-danger">
+									<button type="button" class="close" data-dismiss="alert">&times;</button>
+									<strong>Error al crear el usuario.</strong>
+								</div>
+							</div>';
+                        }
+                    }
+                }
+            ?>
 			
 		</div>
 		
