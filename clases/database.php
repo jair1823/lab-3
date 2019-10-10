@@ -114,7 +114,16 @@
             $rol = 0;
             
             $call = mysqli_prepare($conn, 'CALL crear_usuario(?,?,?,?,?,?,?,?)');
-            mysqli_stmt_bind_param($call, "sssssssi", $nombre, $lastname1, $lastname2, $username, $password, $email, $number, $rol);
+            mysqli_stmt_bind_param($call, "sssssssi", 
+                $nombre, 
+                $lastname1, 
+                $lastname2, 
+                $username, 
+                $password, 
+                $email, 
+                $number, 
+                $rol
+            );
             
             if (!mysqli_stmt_execute($call)) {
                 $this->delete_connection($conn);

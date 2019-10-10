@@ -11,7 +11,7 @@
                 $this->errores["username"] = "El nombre de usuario es requerido";
             } else {
                 $this->data["username"] = $this->test_input($username);
-                if (!preg_match("/^[a-zA-Z][a-zA-Z0-9]*$/", $this->data["username"]) || (strlen($this->data["username"]))>12) {
+                if (!preg_match("/^[a-zA-Z][a-zA-Z0-9]*$/", $this->data["username"]) || (strlen($this->data["username"]))>30) {
                     $this->errores["username"] = "No es un nombre de usuario valido";
                 }
             }
@@ -24,7 +24,8 @@
                 $this->errores["password"] = "Falta la contraseña";
             } else {
                 $this->data["password"] = $this->test_input($password);
-                if (!preg_match("/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,45}$/", $this->data["password"]) || (strlen($this->data["password"]))<8) {
+                if (!preg_match("/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,45}$/", $this->data["password"]) ||
+                    (strlen($this->data["password"]))<8) {
                     $this->errores["password"] =  "La clave solo debe ser una combinación de letras mayúsculas, minúsculas (sin tildes) y números, de mínimo 8 caracteres y máximo 45.";
                 }
             }
@@ -77,7 +78,8 @@
                 $this->errores["email"] = "El correo es requerido.";
             } else {
                 $this->data["email"] = $this->test_input($email);
-                if (!preg_match("/^[A-z0-9\\._-]+@[A-z0-9][A-z0-9-]*(\\.[A-z0-9_-]+)*\\.([A-z]{2,6})$/", $this->data["email"]) || (strlen($this->data["email"]))>20) {
+                if (!preg_match("/^[A-z0-9\\._-]+@[A-z0-9][A-z0-9-]*(\\.[A-z0-9_-]+)*\\.([A-z]{2,6})$/", $this->data["email"]) ||
+                    (strlen($this->data["email"]))>30) {
                     $this->errores["email"] =  "El correo no es valido.";
                 }
             }
@@ -93,7 +95,7 @@
                 
                 $this->data["number"] = str_replace(' ', '', $this->data["number"]);
 
-                if (!preg_match("/^\+[0-9]*$/", $this->data["number"]) || (strlen($this->data["number"]))>20) {
+                if (!preg_match("/^\+[0-9]*$/", $this->data["number"]) || (strlen($this->data["number"]))>30) {
                     $this->errores["number"] =  "El número de celular solo debe contener números (a excepción del + del código de área), y debe ser de máximo 45 caracteres.";
                 }
             }

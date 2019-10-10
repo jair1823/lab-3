@@ -3,7 +3,9 @@
     include './clases/database.php';
     $validatior = new Validator();
     $db = new Database();
+
     $credential = 0;
+    
     setcookie("username", "");
 
 
